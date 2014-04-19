@@ -1,0 +1,21 @@
+!!! 5
+%html
+  %head
+    %title Stern Family Weekend
+
+  %body
+    %header
+      %h1 Stern Family Weekend
+      %nav
+        %ul
+          %li
+            %a{href: '/'} Home
+          %li
+            %a{href: '/history'} History
+          %li
+            %a{href: '/next-year'} Next Year
+
+    = yield
+
+    %footer
+      %p &copy; Stern Family #{Time.now.year}
