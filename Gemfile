@@ -27,3 +27,7 @@ group :development, :test do
 
   gem 'shotgun'
 end
+
+group :staging, :production do
+  gem 'thin'
+end
