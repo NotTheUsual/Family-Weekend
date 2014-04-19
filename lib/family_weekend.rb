@@ -3,6 +3,8 @@ require 'sinatra/base'
 require_relative 'helpers/app'
 
 class FamilyWeekend < Sinatra::Base
+  set :public_folder, File.join(File.dirname(__FILE__), '../public')
+  
   helpers AppHelpers
 
   get '/' do
