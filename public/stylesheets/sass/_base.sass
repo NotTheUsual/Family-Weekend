@@ -53,11 +53,14 @@ body > img
 main
   background-color: $background
   @extend .container
+  display: -webkit-flex
   display: flex
+  -webkit-flex-wrap: wrap
   flex-wrap: wrap
     
 aside
   padding: 1.25em
+  -webkit-flex: 33% 3
   flex: 33% 3
   
   &:nth-of-type(2)
@@ -69,6 +72,7 @@ aside
     
 .body-text
   padding: 1.2em
+  -webkit-flex: 66% 7
   flex: 66% 7
   
   &:nth-of-type(2)
@@ -93,7 +97,9 @@ td
   line-height: 1.25em
 
 dl
+  display: -webkit-flex
   display: flex
+  -webkit-flex-wrap: wrap
   flex-wrap: wrap
   width: 400px
   margin-bottom: 2em
@@ -105,12 +111,14 @@ dt, dd
   color: #000
   
 dt
+  -webkit-flex: 25% 1
   flex: 25% 1
   background-color: #ddd
   border-top-left-radius: 5px
   border-bottom-left-radius: 5px
   
 dd
+  -webkit-flex: 75% 3
   flex: 75% 3
   background-color: #eee
   border-top-right-radius: 5px
