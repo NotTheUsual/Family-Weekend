@@ -16,6 +16,7 @@ gem 'sinatra-partial'
 # end
 
 gem 'haml'
+gem 'sass'
 
 group :development, :test do
   gem 'rspec'
