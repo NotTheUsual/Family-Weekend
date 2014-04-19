@@ -11,11 +11,11 @@
       %nav
         %ul
           %li
-            %a{href: '/'} Home
-          %li
-            %a{href: '/history'} History
-          %li
-            %a{href: '/next-year'} Next Year
+            %a{href: '/', class: nav_class_for('') } Home
+          - pages = ['history', 'next-year']
+          - pages.each do |page|
+            %li
+              %a{href: "/#{page}", class: nav_class_for(page) }= page.capitalize.gsub('-', ' ') 
 
     = yield
 

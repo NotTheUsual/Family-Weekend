@@ -1,6 +1,10 @@
 require 'sinatra/base'
 
+require_relative 'helpers/app'
+
 class FamilyWeekend < Sinatra::Base
+  helpers AppHelpers
+
   get '/' do
     haml :index
   end
