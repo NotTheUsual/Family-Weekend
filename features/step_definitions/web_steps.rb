@@ -17,6 +17,12 @@ Given(/^there are established login details$/) do
   User.create(name: "admin", password: "s3cr3t")
 end
 
+When(/^I enter the correct details$/) do
+  fill_in 'name', with: "admin"
+  fill_in 'password', with: "s3cr3t"
+  click_button 'Sign In'
+end
+
 Then(/^I should see the content for that page$/) do
   expect(page).to have_content("Welcome to the Stern family weekend website, where you’ll find information about this year’s family weekend, and pictures of previous years.
 

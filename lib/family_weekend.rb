@@ -1,5 +1,6 @@
 require 'data_mapper'
 require 'sinatra/base'
+require 'haml'
 
 env = ENV['RACK_ENV'] || "development"
 
@@ -27,6 +28,10 @@ class FamilyWeekend < Sinatra::Base
 
   get '/next-year' do
     haml :next_year
+  end
+
+  get '/login' do
+    haml :login
   end
 
   # start the server if ruby file executed directly
