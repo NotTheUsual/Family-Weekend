@@ -50,7 +50,7 @@ class FamilyWeekend < Sinatra::Base
     user = User.authenticate(name, password)
     if user
       session[:user_id] = user.id
-      redirect to('/')
+      redirect to('/photos')
     else
       redirect to('/login')
     end
