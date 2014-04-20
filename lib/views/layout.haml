@@ -10,6 +10,9 @@
       %h1 Stern Family Weekend
       - if current_user
         %span Signed in
+        %form{id: "sign-out", method: "post", action: "/sessions"}
+          %input{type: "hidden", name: "_method", value: "delete"}
+          %input{type: "submit", class: "button", value: "Sign Out"}
       %nav
         %ul
           %li

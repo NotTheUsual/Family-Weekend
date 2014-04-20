@@ -15,7 +15,8 @@ require_relative 'helpers/app'
 
 class FamilyWeekend < Sinatra::Base
   enable :sessions
-  set :session_secret, 'Dinosaurs and spaceships'
+  set :session_secret, ENV['session_secret']
+  use Rack::MethodOverride
   set :public_folder, File.join(File.dirname(__FILE__), '../public')
   
   helpers AppHelpers
@@ -45,6 +46,11 @@ class FamilyWeekend < Sinatra::Base
     else
       redirect to('/login')
     end
+  end
+
+  delete '/sessions' do
+    session[:user_id] = nil
+    redirect to('/')
   end
 
   # start the server if ruby file executed directly

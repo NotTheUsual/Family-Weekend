@@ -11,10 +11,6 @@ gem 'dm-postgres-adapter'
 
 gem 'bcrypt-ruby'
 
-# group :staging, :production do
-#   gem 'thin'
-# end
-
 gem 'haml'
 gem 'sass'
 

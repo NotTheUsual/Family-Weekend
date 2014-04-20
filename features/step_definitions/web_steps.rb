@@ -17,10 +17,22 @@ Given(/^there are established login details$/) do
   User.create(name: "admin", password: "s3cr3t")
 end
 
+Given(/^I am logged in$/) do
+  User.create(name: "admin", password: "s3cr3t")
+  visit path_to('the login page')
+  fill_in 'name', with: "admin"
+  fill_in 'password', with: "s3cr3t"
+  click_button 'Sign In'
+end
+
 When(/^I enter the correct details$/) do
   fill_in 'name', with: "admin"
   fill_in 'password', with: "s3cr3t"
   click_button 'Sign In'
+end
+
+When(/^I click 'Sign Out'$/) do
+  click_button 'Sign Out'
 end
 
 Then(/^I should see the content for that page$/) do
@@ -31,4 +43,9 @@ end
 
 Then(/^I should be signed in$/) do
   expect(page).to have_content('Signed in')
+end
+
+Then(/^I should be signed out$/) do
+  expect(page).not_to have_content('Signed in')
+  expect(page).to have_content('Stern Family Weekend')
 end
