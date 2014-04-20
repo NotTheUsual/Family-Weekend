@@ -17,13 +17,26 @@ h1
   font-weight: bold
   margin-top: 0.6em
   margin-bottom: 0.6em
-  @extend .container
   
 a
   text-decoration: none
     
 strong
   font-weight: bold
+    
+.top-bar
+  @extend .container
+  display: flex
+  justify-content: space-between
+    
+  .user-links
+    margin-top: 3em
+    form
+      display: inline-block
+      margin-left: 1em
+      vertical-align: text-top
+      position: relative
+      bottom: 2px
   
 nav 
   @extend .container
@@ -57,7 +70,16 @@ main
   display: flex
   -webkit-flex-wrap: wrap
   flex-wrap: wrap
-    
+
+.full-width-header
+  width: 100%
+  background-color: $banner-color
+  color: #fff
+  padding: 1.75em
+  
+  h1
+    margin: 0
+  
 aside
   padding: 1.25em
   -webkit-flex: 33% 3
@@ -135,6 +157,30 @@ address
   display: inline-block
   vertical-align: text-top
   padding-left: 1em
+  
+#sign-in
+  width: 50%
+  margin: 2em auto
+  
+  input[type=text], input[type=password]
+    width: 100%
+    font-size: 1.5em
+    padding: 0.75em
+    border: 0
+    background-color: rgba(203, 203, 203, 0.31)
+    margin-bottom: 1em
+    
+  .form-button
+    font-size: 1.25em
+    padding: 0.5em 0.75em
+    border: none
+    background-color: #05d125
+    color: #fff
+    border-radius: 3px
+    cursor: pointer
+      
+    &:hover
+      background-color: lighten(#05d125, 2%)
     
 footer
   @extend .container

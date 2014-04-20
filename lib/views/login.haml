@@ -1,5 +1,6 @@
 %main
-  %h1 Sign in
+  %header{class: 'full-width-header'}
+    %h1 Sign in
   %form{id: "sign-in", method: "post", action: "/sessions"}
     %input{type: "text", name: "name", placeholder: "Username", required: ""}
     %input{type: "password", name: "password", placeholder: "Password", required: ""}
