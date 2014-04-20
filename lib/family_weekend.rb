@@ -14,6 +14,8 @@ DataMapper.auto_upgrade!
 require_relative 'helpers/app'
 
 class FamilyWeekend < Sinatra::Base
+  enable :sessions
+  set :session_secret, 'Dinosaurs and spaceships'
   set :public_folder, File.join(File.dirname(__FILE__), '../public')
   
   helpers AppHelpers
@@ -32,6 +34,17 @@ class FamilyWeekend < Sinatra::Base
 
   get '/login' do
     haml :login
+  end
+
+  post '/sessions' do
+    name, password = params[:name], params[:password]
+    user = User.authenticate(name, password)
+    if user
+      session[:user_id] = user.id
+      redirect to('/')
+    else
+      redirect to('/login')
+    end
   end
 
   # start the server if ruby file executed directly

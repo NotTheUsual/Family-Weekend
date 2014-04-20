@@ -25,8 +25,10 @@ end
 
 Then(/^I should see the content for that page$/) do
   expect(page).to have_content("Welcome to the Stern family weekend website, where you’ll find information about this year’s family weekend, and pictures of previous years.
+                                For any newcomers who might be interested we’ve included the story to date, and for those who consider themselves old-timers test yourselves by seeing if you can write out the list of where we were when before you check the history page (it took three of our finest minds for us to manage it).
+                                Please send us any news and photos to add and we will put them up.")
+end
 
-For any newcomers who might be interested we’ve included the story to date, and for those who consider themselves old-timers test yourselves by seeing if you can write out the list of where we were when before you check the history page (it took three of our finest minds for us to manage it).
-
-Please send us any news and photos to add and we will put them up.")
+Then(/^I should be signed in$/) do
+  expect(page).to have_content('Signed in')
 end

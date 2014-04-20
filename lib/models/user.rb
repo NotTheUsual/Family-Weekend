@@ -14,10 +14,10 @@ class User
     self.password_digest = BCrypt::Password.create(password)
   end
 
-  # def self.authenticate(username, password)
-  #   maker = first(username: username)
-  #   if maker && BCrypt::Password.new(maker.password_digest) == password
-  #     maker
-  #   end
-  # end
+  def self.authenticate(name, password)
+    maker = first(name: name)
+    if maker && BCrypt::Password.new(maker.password_digest) == password
+      maker
+    end
+  end
 end
