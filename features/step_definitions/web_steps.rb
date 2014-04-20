@@ -25,6 +25,10 @@ Given(/^I am logged in$/) do
   click_button 'Sign In'
 end
 
+Given(/^I am not logged in$/) do
+  visit path_to('the homepage')
+end
+
 When(/^I enter the correct details$/) do
   fill_in 'name', with: "admin"
   fill_in 'password', with: "s3cr3t"
@@ -33,6 +37,10 @@ end
 
 When(/^I click 'Sign Out'$/) do
   click_button 'Sign Out'
+end
+
+When(/^I click on 'Photos' in the menu$/) do
+  click_link 'Photos'
 end
 
 Then(/^I should see the content for that page$/) do
@@ -48,4 +56,9 @@ end
 Then(/^I should be signed out$/) do
   expect(page).not_to have_content('Signed in')
   expect(page).to have_content('Stern Family Weekend')
+end
+
+Then(/^I should be on (.+)$/) do |page_name|
+  current_path = URI.parse(current_url).path
+  expect(current_path).to eq(path_to(page_name))
 end

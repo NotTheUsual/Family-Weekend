@@ -16,6 +16,9 @@ module NavigationHelpers
     when /the log\s?in page/
       '/login'
 
+    when /the photos page/
+      '/photos'
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

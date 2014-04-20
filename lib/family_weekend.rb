@@ -33,6 +33,14 @@ class FamilyWeekend < Sinatra::Base
     haml :next_year
   end
 
+  get '/photos' do
+    if session[:user_id]
+      haml :photos
+    else
+      redirect to('/login')
+    end
+  end
+
   get '/login' do
     haml :login
   end
