@@ -13,6 +13,10 @@ Given(/^I am on (.+)$/) do |page_name|
   visit path_to(page_name)
 end
 
+Given(/^there are established login details$/) do
+  User.create(name: "admin", password: "s3cr3t")
+end
+
 Then(/^I should see the content for that page$/) do
   expect(page).to have_content("Welcome to the Stern family weekend website, where you’ll find information about this year’s family weekend, and pictures of previous years.
 

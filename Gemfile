@@ -6,10 +6,10 @@ gem 'sinatra'
 gem 'rack-flash3'
 gem 'sinatra-partial'
 
-# gem 'data_mapper'
-# gem 'dm-postgres-adapter'
+gem 'data_mapper'
+gem 'dm-postgres-adapter'
 
-# gem 'bcrypt-ruby'
+gem 'bcrypt-ruby'
 
 # group :staging, :production do
 #   gem 'thin'
