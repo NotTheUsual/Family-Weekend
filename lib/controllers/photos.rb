@@ -11,9 +11,7 @@ class PhotosController < Base
   end
 
   post '/photos' do
-    image = params[:photo]
-    year = params[:year]
-    Photo.create(image: image, year: year)
+    Photo.create(photo_params)
     redirect to('/photos')
   end
 
@@ -24,5 +22,11 @@ class PhotosController < Base
   get '/photos/:id' do |id|
     @photo = Photo.get(id)
     haml :"photos/show"
+  end
+
+  private
+  
+  def photo_params
+    {image: params[:photo], year: params[:year]}
   end
 end
