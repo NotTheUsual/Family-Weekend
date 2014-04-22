@@ -2,12 +2,9 @@ require_relative 'base'
 
 class PhotosController < Base
   get '/photos' do
-    if session[:user_id]
-      @photos = Photo.all
-      haml :photos
-    else
-      redirect to('/login')
-    end
+    redirect_if_logged_out
+    @photos = Photo.all
+    haml :photos
   end
 
   post '/photos' do
