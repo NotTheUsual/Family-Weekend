@@ -34,25 +34,9 @@ class FamilyWeekend < Sinatra::Base
   get('/photos/new') { PhotosController.call(env) }
   get('/photos/:id') { PhotosController.call(env) }
 
-  get '/login' do
-    haml :login
-  end
-
-  post '/sessions' do
-    name, password = params[:name], params[:password]
-    user = User.authenticate(name, password)
-    if user
-      session[:user_id] = user.id
-      redirect to('/photos')
-    else
-      redirect to('/login')
-    end
-  end
-
-  delete '/sessions' do
-    session[:user_id] = nil
-    redirect to('/')
-  end
+  get('/login')       { AuthenticationController.call(env) }
+  post('/sessions')   { AuthenticationController.call(env) }
+  delete('/sessions') { AuthenticationController.call(env) }
 
   # start the server if ruby file executed directly
   run! if app_file == $0
