@@ -6,4 +6,5 @@
       %figure
         %a{href: "/photos/#{photo.id}"}
           %img{src: thumb_url(photo)}
-        %figcaption= photo.year 
+        %figcaption= photo.year
+    %a{href: "/photos/new", class: 'button'} Upload Photo

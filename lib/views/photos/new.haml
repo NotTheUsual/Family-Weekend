@@ -1,0 +1,7 @@
+%main
+  %header{class: 'full-width-header'}
+    %h1 New Photo
+  %form{id: "new-photo", method: "post", action: "/photos", enctype: "multipart/form-data"}
+    %input{type: "file", name: "photo", id: "photo", required: ""}
+    %input{type: "text", name: "year", placeholder: "Year", required: ""}
+    %input{type: "submit", class: "form-button", name: "Upload", value: "Upload"}

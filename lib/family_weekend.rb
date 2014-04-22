@@ -8,7 +8,7 @@ env = ENV['RACK_ENV'] || "development"
 DataMapper.setup(:default, ENV['DATABASE_URL'] || "postgres://localhost/stern_#{env}")
 
 CarrierWave.configure do |config| 
-  config.root = "#{Dir.pwd}/public/" 
+  config.root = "#{Dir.pwd}" 
 end 
 
 require_relative 'uploaders/image_uploader'
@@ -46,6 +46,17 @@ class FamilyWeekend < Sinatra::Base
     else
       redirect to('/login')
     end
+  end
+
+  post '/photos' do
+    image = params[:photo]
+    year = params[:year]
+    Photo.create(image: image, year: year)
+    redirect to('/photos')
+  end
+
+  get '/photos/new' do
+    haml :"photos/new"
   end
 
   get '/photos/:id' do |id|

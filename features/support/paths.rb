@@ -19,6 +19,9 @@ module NavigationHelpers
     when /the photos page/
       '/photos'
 
+    when /the new photo page/
+      '/photos/new'
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

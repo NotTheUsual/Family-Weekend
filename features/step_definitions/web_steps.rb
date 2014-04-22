@@ -39,6 +39,10 @@ When(/^I click 'Sign Out'$/) do
   click_button 'Sign Out'
 end
 
+When(/^I click "(.*?)"$/) do |link|
+  click_link link
+end
+
 When(/^I click on 'Photos' in the menu$/) do
   click_link 'Photos'
 end
@@ -48,6 +52,12 @@ When(/^I log in$/) do
   fill_in 'name', with: "admin"
   fill_in 'password', with: "s3cr3t"
   click_button 'Sign In'
+end
+
+When(/^I upload a photo$/) do
+  attach_file('photo', "#{Dir.pwd}/features/fixtures/2011.jpg")
+  fill_in 'year', with: "2011"
+  click_button "Upload"
 end
 
 Then(/^I should see the content for that page$/) do
@@ -63,6 +73,11 @@ end
 Then(/^I should be signed out$/) do
   expect(page).not_to have_content('Signed in')
   expect(page).to have_content('Stern Family Weekend')
+end
+
+Then(/^I should see that photo$/) do
+  expect(page).to have_content('2011')
+  expect(page).to have_xpath("//img[contains(@src, '2011.jpg')]")
 end
 
 Then(/^I should be on (.+)$/) do |page_name|
