@@ -3,19 +3,7 @@ require 'sinatra/base'
 require 'haml'
 require 'carrierwave/datamapper'
 
-env = ENV['RACK_ENV'] || "development"
-
-DataMapper.setup(:default, ENV['DATABASE_URL'] || "postgres://localhost/stern_#{env}")
-
-CarrierWave.configure do |config| 
-  config.root = "#{Dir.pwd}" 
-end 
-
-require_relative 'uploaders/image_uploader'
-Dir.glob(File.join(File.dirname(__FILE__), 'models', '*.rb'), &method(:require))
-
-DataMapper.finalize
-DataMapper.auto_upgrade!
+require_relative 'initialisation'
 
 require_relative 'helpers/app'
 
