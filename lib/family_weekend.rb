@@ -7,6 +7,8 @@ require_relative 'initialisation'
 
 require_relative 'helpers/app'
 
+Dir.glob(File.join(File.dirname(__FILE__), 'controllers', '*.rb'), &method(:require))
+
 class FamilyWeekend < Sinatra::Base
   enable :sessions
   set :session_secret, ENV['session_secret']
@@ -27,30 +29,10 @@ class FamilyWeekend < Sinatra::Base
     haml :next_year
   end
 
-  get '/photos' do
-    if session[:user_id]
-      @photos = Photo.all
-      haml :photos
-    else
-      redirect to('/login')
-    end
-  end
-
-  post '/photos' do
-    image = params[:photo]
-    year = params[:year]
-    Photo.create(image: image, year: year)
-    redirect to('/photos')
-  end
-
-  get '/photos/new' do
-    haml :"photos/new"
-  end
-
-  get '/photos/:id' do |id|
-    @photo = Photo.get(id)
-    haml :"photos/show"
-  end
+  get('/photos')     { PhotosController.call(env) }
+  post('/photos')    { PhotosController.call(env) }
+  get('/photos/new') { PhotosController.call(env) }
+  get('/photos/:id') { PhotosController.call(env) }
 
   get '/login' do
     haml :login
