@@ -9,6 +9,9 @@ gem 'sinatra-partial'
 gem 'data_mapper'
 gem 'dm-postgres-adapter'
 
+gem 'carrierwave-datamapper'
+gem "mini_magick"
+
 gem 'bcrypt-ruby'
 
 gem 'haml'

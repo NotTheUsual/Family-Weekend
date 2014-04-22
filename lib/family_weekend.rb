@@ -1,11 +1,17 @@
 require 'data_mapper'
 require 'sinatra/base'
 require 'haml'
+require 'carrierwave/datamapper'
 
 env = ENV['RACK_ENV'] || "development"
 
 DataMapper.setup(:default, ENV['DATABASE_URL'] || "postgres://localhost/stern_#{env}")
 
+CarrierWave.configure do |config| 
+  config.root = "#{Dir.pwd}/public/" 
+end 
+
+require_relative 'uploaders/image_uploader'
 Dir.glob(File.join(File.dirname(__FILE__), 'models', '*.rb'), &method(:require))
 
 DataMapper.finalize
@@ -35,10 +41,16 @@ class FamilyWeekend < Sinatra::Base
 
   get '/photos' do
     if session[:user_id]
+      @photos = Photo.all
       haml :photos
     else
       redirect to('/login')
     end
+  end
+
+  get '/photos/:id' do |id|
+    @photo = Photo.get(id)
+    haml :"photos/show"
   end
 
   get '/login' do
