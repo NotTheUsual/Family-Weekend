@@ -17,17 +17,9 @@ class FamilyWeekend < Sinatra::Base
   
   helpers AppHelpers
 
-  get '/' do
-    haml :index
-  end
-
-  get '/history' do
-    haml :history
-  end
-
-  get '/next-year' do
-    haml :next_year
-  end
+  get('/')          { StaticPagesController.call(env) }
+  get('/history')   { StaticPagesController.call(env) }
+  get('/next-year') { StaticPagesController.call(env) }
 
   get('/photos')     { PhotosController.call(env) }
   post('/photos')    { PhotosController.call(env) }
