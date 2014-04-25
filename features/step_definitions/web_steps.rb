@@ -129,6 +129,6 @@ end
 
 Then(/^I should see the video and its description$/) do
   expect(page).to have_xpath("//iframe")
-  expect(page).to have_content("This film is the edited highlights o over 40 years of footage from the yearly tradition of the Stern family reunion.")
+  expect(page).to have_content("This film is the edited highlights of over 40 years of footage from the yearly tradition of the Stern family reunion.")
   expect(page).to have_content("For more information, contact Carly Hartley on carly(dot)hartley(at)gmail(dot)com")
 end
