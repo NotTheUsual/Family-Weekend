@@ -2,13 +2,17 @@ class ImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
   if ENV['RACK_ENV'] == 'production' 
-    storage :s3 
+    storage :fog
   else 
     storage :file 
   end 
  
   def store_dir 
-    "public/uploads/image" 
+    if ENV['RACK_ENV'] == 'production' 
+      "uploads/image"
+    else 
+      "public/uploads/image"
+    end 
   end 
  
   def extensions_white_list 

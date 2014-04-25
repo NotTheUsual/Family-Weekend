@@ -11,6 +11,7 @@ gem 'dm-postgres-adapter'
 
 gem 'carrierwave-datamapper'
 gem "mini_magick"
+gem 'fog'
 
 gem 'bcrypt-ruby'
 
