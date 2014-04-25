@@ -6,6 +6,7 @@ class User
   property :id, Serial
   property :name, String, unique: true, message: "This name is already taken"
   property :password_digest, Text
+  property :admin, Boolean
 
   attr_reader :password
 
@@ -19,5 +20,9 @@ class User
     if maker && BCrypt::Password.new(maker.password_digest) == password
       maker
     end
+  end
+
+  def admin?
+    admin
   end
 end

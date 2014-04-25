@@ -28,3 +28,8 @@ Feature: Photos
     When I upload a photo
     Then I should be on the photos page
     And I should see that photo
+
+  Scenario: When not an admin
+    Given I am logged in as a regular user
+    When I am on the photos page
+    Then I should not be able to upload photos

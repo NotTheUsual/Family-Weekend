@@ -14,13 +14,21 @@ Given(/^I am on (.+)$/) do |page_name|
 end
 
 Given(/^there are established login details$/) do
-  User.create(name: "admin", password: "s3cr3t")
+  User.create(name: "admin", password: "s3cr3t", admin: true)
 end
 
 Given(/^I am logged in$/) do
-  User.create(name: "admin", password: "s3cr3t")
+  User.create(name: "admin", password: "s3cr3t", admin: true)
   visit path_to('the login page')
   fill_in 'name', with: "admin"
+  fill_in 'password', with: "s3cr3t"
+  click_button 'Sign In'
+end
+
+Given(/^I am logged in as a regular user$/) do
+  User.create(name: "user", password: "s3cr3t", admin: false)
+  visit path_to('the login page')
+  fill_in 'name', with: "user"
   fill_in 'password', with: "s3cr3t"
   click_button 'Sign In'
 end
@@ -48,7 +56,7 @@ When(/^I click on 'Photos' in the menu$/) do
 end
 
 When(/^I log in$/) do
-  User.create(name: "admin", password: "s3cr3t")
+  User.create(name: "admin", password: "s3cr3t", admin: true)
   fill_in 'name', with: "admin"
   fill_in 'password', with: "s3cr3t"
   click_button 'Sign In'
@@ -83,4 +91,8 @@ end
 Then(/^I should be on (.+)$/) do |page_name|
   current_path = URI.parse(current_url).path
   expect(current_path).to eq(path_to(page_name))
+end
+
+Then(/^I should not be able to upload photos$/) do
+  expect(page).not_to have_content("Upload Photo")
 end

@@ -7,4 +7,5 @@
         %a{href: "/photos/#{photo.id}"}
           %img{src: thumb_url(photo)}
         %figcaption= photo.year
-    %a{href: "/photos/new", class: 'button'} Upload Photo
+    - if current_user && current_user.admin?
+      %a{href: "/photos/new", class: 'button'} Upload Photo
