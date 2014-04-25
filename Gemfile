@@ -13,7 +13,7 @@ gem 'carrierwave-datamapper'
 gem "mini_magick"
 gem 'fog'
 
-gem 'bcrypt-ruby'
+gem 'bcrypt'
 
 gem 'haml'
 gem 'sass'

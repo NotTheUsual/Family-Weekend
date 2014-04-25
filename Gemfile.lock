@@ -170,7 +170,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bcrypt-ruby
+  bcrypt
   capybara
   carrierwave-datamapper
   cucumber-sinatra
