@@ -21,8 +21,4 @@ class User
       maker
     end
   end
-
-  def admin?
-    admin
-  end
 end
