@@ -113,3 +113,16 @@ end
 Then(/^I should not be able to upload photos$/) do
   expect(page).not_to have_content("Upload Photo")
 end
+
+# From https://github.com/makandra/spreewald
+Then(/^I should see in the following order:?$/) do |text|
+  if text.is_a?(String)
+    lines = text.split(/\n/)
+  else
+    lines = text.raw.flatten
+  end
+  lines = lines.collect { |line| line.gsub(/\s+/, ' ')}.collect(&:strip).reject(&:empty?)
+  pattern = lines.collect(&Regexp.method(:quote)).join('.*?')
+  pattern = Regexp.compile(pattern)
+  page.text.gsub(/\s+/, ' ').should =~ pattern
+end

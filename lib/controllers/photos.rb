@@ -3,7 +3,7 @@ require_relative 'base'
 class PhotosController < Base
   get '/photos' do
     redirect_if_logged_out
-    @photos = Photo.all
+    @photos = Photo.all(order: [ :year.desc ])
     haml :photos
   end
 

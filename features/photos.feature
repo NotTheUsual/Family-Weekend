@@ -16,6 +16,14 @@ Feature: Photos
     When I log in
     Then I should be on the photos page
 
+  Scenario: Viewing photos in order
+    Given there are photos uploaded
+    And I am logged in
+    When I visit the photos page
+    Then I should see in the following order:
+      | 2012 |
+      | 2011 |
+
   Scenario: Starting the upload process
     Given I am logged in
     And I am on the photos page
