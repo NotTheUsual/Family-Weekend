@@ -13,10 +13,12 @@ class PhotosController < Base
   end
 
   get '/photos/new' do
+    redirect_if_logged_out # untested
     haml :"photos/new"
   end
 
   get '/photos/:id' do |id|
+    redirect_if_logged_out # untested
     @photo = Photo.get(id)
     haml :"photos/show"
   end
@@ -24,6 +26,6 @@ class PhotosController < Base
   private
   
   def photo_params
-    {image: params[:photo], year: params[:year]}
+    { image: params[:photo], year: params[:year] }
   end
 end

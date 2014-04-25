@@ -3,9 +3,9 @@
     %h1 Photos
   %section{class: 'photo-container'}
     - @photos.each do |photo|
-      %figure
-        %a{href: "/photos/#{photo.id}"}
+      %a{href: "/photos/#{photo.id}"}
+        %figure
           %img{src: thumb_url(photo)}
-        %figcaption= photo.year
+          %figcaption= photo.year
     - if current_user && current_user.admin?
       %a{href: "/photos/new", class: 'button'} Upload Photo
