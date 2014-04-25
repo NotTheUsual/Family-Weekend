@@ -26,6 +26,9 @@ module NavigationHelpers
       id = Photo.first.id
       "/photos/#{id}"
 
+    when /the video page/
+      '/video'
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
