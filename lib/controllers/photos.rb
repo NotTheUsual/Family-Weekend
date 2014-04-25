@@ -13,12 +13,12 @@ class PhotosController < Base
   end
 
   get '/photos/new' do
-    redirect_if_logged_out # untested
+    redirect_if_not_admin
     haml :"photos/new"
   end
 
   get '/photos/:id' do |id|
-    redirect_if_logged_out # untested
+    redirect_if_logged_out
     @photo = Photo.get(id)
     haml :"photos/show"
   end

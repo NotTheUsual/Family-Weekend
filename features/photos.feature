@@ -29,7 +29,22 @@ Feature: Photos
     Then I should be on the photos page
     And I should see that photo
 
-  Scenario: When not an admin
+  Scenario: Looking for the upload button when not an admin
     Given I am logged in as a regular user
     When I am on the photos page
     Then I should not be able to upload photos
+
+  Scenario: Trying to upload a photo as a non-admin user
+    Given I am logged in as a regular user
+    When I visit the new photo page
+    Then I should be on the login page
+
+  Scenario: Trying to upload a photo when not logged in
+    Given I am not logged in
+    When I visit the new photo page
+    Then I should be on the login page
+
+  Scenario: Trying to view a photo when not logged in
+    Given there are photos uploaded
+    When I visit a photo page
+    Then I should be on the login page

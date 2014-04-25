@@ -14,6 +14,10 @@ class Base < Sinatra::Base
   private
 
   def redirect_if_logged_out
-    redirect to('/login') unless session[:user_id]
+    redirect to('/login') unless current_user
+  end
+
+  def redirect_if_not_admin
+    redirect to('/login') unless current_user && current_user.admin?
   end
 end

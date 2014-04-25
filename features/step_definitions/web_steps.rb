@@ -9,7 +9,7 @@ module WithinHelpers
 end
 World(WithinHelpers)
 
-Given(/^I am on (.+)$/) do |page_name|
+Given(/^I (?:am on|visit) (.+)$/) do |page_name|
   visit path_to(page_name)
 end
 
@@ -35,6 +35,23 @@ end
 
 Given(/^I am not logged in$/) do
   visit path_to('the homepage')
+end
+
+Given(/^there are photos uploaded$/) do
+  User.create(name: "admin", password: "s3cr3t", admin: true)
+  visit path_to('the login page')
+  fill_in 'name', with: "admin"
+  fill_in 'password', with: "s3cr3t"
+  click_button 'Sign In'
+  visit '/photos/new'
+  attach_file('photo', "#{Dir.pwd}/features/fixtures/2011.jpg")
+  fill_in 'year', with: "2011"
+  click_button "Upload"
+  visit '/photos/new'
+  attach_file('photo', "#{Dir.pwd}/features/fixtures/2011.jpg")
+  fill_in 'year', with: "2012"
+  click_button "Upload"
+  click_button 'Sign Out'
 end
 
 When(/^I enter the correct details$/) do
