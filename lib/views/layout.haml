@@ -7,12 +7,19 @@
 
   %body
     %header
-      %h1 Stern Family Weekend
+      %section{class: 'top-bar'}
+        %h1 Stern Family Weekend
+        - if current_user
+          %menu{class: 'user-links'}
+            %span Signed in
+            %form{id: "sign-out", method: "post", action: "/sessions"}
+              %input{type: "hidden", name: "_method", value: "delete"}
+              %input{type: "submit", class: "button", value: "Sign Out"}
       %nav
         %ul
           %li
             %a{href: '/', class: nav_class_for('') } Home
-          - pages = ['history', 'next-year']
+          - pages = ['history', 'next-year', 'photos', 'video']
           - pages.each do |page|
             %li
               %a{href: "/#{page}", class: nav_class_for(page) }= page.capitalize.gsub('-', ' ') 

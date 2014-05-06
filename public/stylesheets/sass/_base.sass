@@ -17,13 +17,26 @@ h1
   font-weight: bold
   margin-top: 0.6em
   margin-bottom: 0.6em
-  @extend .container
   
 a
   text-decoration: none
     
 strong
   font-weight: bold
+    
+.top-bar
+  @extend .container
+  display: flex
+  justify-content: space-between
+    
+  .user-links
+    margin-top: 3em
+    form
+      display: inline-block
+      margin-left: 1em
+      vertical-align: text-top
+      position: relative
+      bottom: 2px
   
 nav 
   @extend .container
@@ -57,7 +70,16 @@ main
   display: flex
   -webkit-flex-wrap: wrap
   flex-wrap: wrap
-    
+
+.full-width-header
+  width: 100%
+  background-color: $banner-color
+  color: #fff
+  padding: 1.75em
+  
+  h1
+    margin: 0
+  
 aside
   padding: 1.25em
   -webkit-flex: 33% 3
@@ -128,6 +150,9 @@ dd
   display: inline-block
   max-width: 65%
   vertical-align: text-top
+    
+  iframe
+    max-width: 100%
   
 address
   width: 30%
@@ -135,6 +160,91 @@ address
   display: inline-block
   vertical-align: text-top
   padding-left: 1em
+  
+#new-photo, #sign-in
+  width: 50%
+  margin: 2em auto
+  
+  input[type=text], input[type=password]
+    width: 100%
+    font-size: 1.5em
+    padding: 0.75em
+    border: 0
+    background-color: rgba(203, 203, 203, 0.31)
+    margin-bottom: 1em
+    
+  input[type=file]
+    width: 100%
+    padding: 2em 1.5em
+    margin-bottom: 1.5em
+    background-color: #ddd
+    
+  .form-button
+    font-size: 1.25em
+    padding: 0.5em 0.75em
+    border: none
+    background-color: #05d125
+    color: #fff
+    border-radius: 3px
+    cursor: pointer
+      
+    &:hover
+      background-color: lighten(#05d125, 2%)
+        
+.photo-container
+  padding: 0.5em
+  display: flex
+  width: 100%
+  flex-wrap: wrap
+    
+  .button
+    flex: 25% 0
+  
+  > a
+    flex: 25% 0
+    padding: 0.5em
+    
+    img
+      width: 100%
+      max-height: 180px
+      overflow: hidden
+      margin-bottom: -2px
+    
+    figcaption
+      background-color: #2c3e50
+      display: block
+      color: #fff
+      font-size: 1.5em
+      padding: 0.25em 0.4em
+      font-weight: 500
+    
+    &:hover figure
+      @include box-shadow(0, 0, 10px, rgba(44, 62, 80, 0.85))
+        
+    &.button
+      display: block
+      text-align: center
+      background-color: #0a890d
+      color: #fff
+      border: 1rem solid #fff
+      font-size: 2em
+      padding-top: 2.5em
+      
+      &:hover
+        background-color: lighten(#0a890d, 5%)
+
+.video-container
+  background-color: darken($banner-color, 10%)
+  padding: 1em
+  text-align: center
+  width: 100%
+  
+  iframe
+    margin-bottom: 2em
+    
+  p
+    color: #fff
+    margin-bottom: 1em
     
 footer
   @extend .container

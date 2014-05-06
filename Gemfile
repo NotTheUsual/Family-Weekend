@@ -6,14 +6,14 @@ gem 'sinatra'
 gem 'rack-flash3'
 gem 'sinatra-partial'
 
-# gem 'data_mapper'
-# gem 'dm-postgres-adapter'
+gem 'data_mapper'
+gem 'dm-postgres-adapter'
 
-# gem 'bcrypt-ruby'
+gem 'carrierwave-datamapper'
+gem "mini_magick"
+gem 'fog'
 
-# group :staging, :production do
-#   gem 'thin'
-# end
+gem 'bcrypt'
 
 gem 'haml'
 gem 'sass'

@@ -13,6 +13,22 @@ module NavigationHelpers
     when /the home\s?page/
       '/'
 
+    when /the log\s?in page/
+      '/login'
+
+    when /the photos page/
+      '/photos'
+
+    when /the new photo page/
+      '/photos/new'
+
+    when /a photo page/
+      id = Photo.first.id
+      "/photos/#{id}"
+
+    when /the video page/
+      '/video'
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
