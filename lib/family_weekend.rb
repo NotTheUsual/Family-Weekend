@@ -21,6 +21,7 @@ class FamilyWeekend < Sinatra::Base
   get('/history')   { StaticPagesController.call(env) }
   get('/next-year') { StaticPagesController.call(env) }
   get('/video')     { StaticPagesController.call(env) }
+  get('/survey')    { StaticPagesController.call(env) }
 
   get('/photos')     { PhotosController.call(env) }
   post('/photos')    { PhotosController.call(env) }

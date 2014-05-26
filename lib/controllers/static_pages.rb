@@ -17,4 +17,9 @@ class StaticPagesController < Base
     redirect_if_logged_out
     haml :video
   end
+
+  get '/survey' do
+    redirect_if_logged_out
+    haml :survey
+  end
 end

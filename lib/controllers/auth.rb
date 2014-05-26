@@ -10,7 +10,7 @@ class AuthenticationController < Base
     user = User.authenticate(name, password)
     if user
       session[:user_id] = user.id
-      redirect to('/photos')
+      redirect to(session[:redirection])
     else
       redirect to('/login')
     end
