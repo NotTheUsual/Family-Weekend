@@ -26,6 +26,7 @@ group :development, :test do
   gem 'database_cleaner', git: 'git://github.com/bmabey/database_cleaner'
 
   gem 'shotgun'
+  gem 'foreman'
 end
 
 group :staging, :production do

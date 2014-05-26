@@ -14,6 +14,7 @@ class Base < Sinatra::Base
   private
 
   def redirect_if_logged_out
+    session[:redirection] = request.path
     redirect to('/login') unless current_user
   end
 

@@ -23,6 +23,8 @@
           - pages.each do |page|
             %li
               %a{href: "/#{page}", class: nav_class_for(page) }= page.capitalize.gsub('-', ' ') 
+          %li
+            %a{href: "/survey", class: "survey " + nav_class_for("survey") } Survey
 
     = yield
 
