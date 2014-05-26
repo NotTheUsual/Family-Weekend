@@ -63,6 +63,24 @@ body > img
   display: block
   @extend .container
     
+.main-image
+  display: block
+  position: relative
+  @extend .container
+    
+  img
+    width: 100%
+    display: block
+    
+  figcaption
+    position: absolute
+    bottom: 0
+    left: 0
+    padding: 0.5em 0.6em
+    background-color: $featured-color
+    color: #fafafa
+    opacity: 0.8
+    
 main
   background-color: $background
   @extend .container
