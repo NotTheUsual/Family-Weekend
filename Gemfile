@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.1.1'
+ruby '2.1.2'
 
 gem 'sinatra'
 gem 'rack-flash3'
@@ -10,7 +10,7 @@ gem 'data_mapper'
 gem 'dm-postgres-adapter'
 
 gem 'carrierwave-datamapper'
-gem "mini_magick"
+gem 'mini_magick'
 gem 'fog'
 
 gem 'bcrypt'
@@ -21,7 +21,7 @@ gem 'sass'
 group :development, :test do
   gem 'rspec'
   gem 'capybara'
-  # gem 'cucumber'
+  gem 'cucumber'
   gem 'cucumber-sinatra'
   gem 'database_cleaner', git: 'git://github.com/bmabey/database_cleaner'
 
