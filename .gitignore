@@ -7,3 +7,7 @@ public/uploads/*
 tmp
 
 .DS_Store
+
+.ruby-version
+.ruby-gemset
+
