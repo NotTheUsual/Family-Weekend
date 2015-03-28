@@ -29,6 +29,8 @@ group :development, :test do
   gem 'foreman'
 end
 
+gem "codeclimate-test-reporter", group: :test, require: nil
+
 group :staging, :production do
   gem 'thin'
 end
