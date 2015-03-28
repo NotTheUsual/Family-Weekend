@@ -44,11 +44,11 @@ Given(/^there are photos uploaded$/) do
   fill_in 'password', with: "s3cr3t"
   click_button 'Sign In'
   visit '/photos/new'
-  attach_file('photo', "#{Dir.pwd}/features/fixtures/2011.png")
+  attach_file('photo', "#{Dir.pwd}/features/fixtures/2011.jpg")
   fill_in 'year', with: "2011"
   click_button "Upload"
   visit '/photos/new'
-  attach_file('photo', "#{Dir.pwd}/features/fixtures/2011.png")
+  attach_file('photo', "#{Dir.pwd}/features/fixtures/2011.jpg")
   fill_in 'year', with: "2012"
   click_button "Upload"
   click_button 'Sign Out'
@@ -69,7 +69,6 @@ When(/^I click "(.*?)"$/) do |link|
 end
 
 When(/^I click on 'Photos' in the menu$/) do
-  expect(page).to have_content('Photos')
   click_link 'Photos'
 end
 
@@ -81,7 +80,7 @@ When(/^I log in$/) do
 end
 
 When(/^I upload a photo$/) do
-  attach_file('photo', "#{Dir.pwd}/features/fixtures/2011.png")
+  attach_file('photo', "#{Dir.pwd}/features/fixtures/2011.jpg")
   fill_in 'year', with: "2011"
   click_button "Upload"
 end
@@ -103,7 +102,7 @@ end
 
 Then(/^I should see that photo$/) do
   expect(page).to have_content('2011')
-  expect(page).to have_xpath("//img[contains(@src, '2011.png')]")
+  expect(page).to have_xpath("//img[contains(@src, '2011.jpg')]")
 end
 
 Then(/^I should be on (.+)$/) do |page_name|
