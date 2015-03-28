@@ -69,6 +69,7 @@ When(/^I click "(.*?)"$/) do |link|
 end
 
 When(/^I click on 'Photos' in the menu$/) do
+  expect(page).to have_content('Photos')
   click_link 'Photos'
 end
 
