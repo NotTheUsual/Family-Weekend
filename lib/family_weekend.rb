@@ -32,6 +32,11 @@ class FamilyWeekend < Sinatra::Base
   post('/sessions')   { AuthenticationController.call(env) }
   delete('/sessions') { AuthenticationController.call(env) }
 
+  get('/news/manage') {
+    @news_posts = [{title: 'News Post 1', date: '12/03/15'},{title: 'News Post 2', date: '11/03/15'}]
+    haml :"news/manage"
+  }
+
   # start the server if ruby file executed directly
   run! if app_file == $0
 end

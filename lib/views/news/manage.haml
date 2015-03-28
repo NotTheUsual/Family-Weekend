@@ -1,0 +1,10 @@
+%main.admin
+  %header.full-width-header
+    %h1 Manage News Posts
+  %ul.admin-news-post-list
+    - @news_posts.each do |post|
+      %li.admin-news-post-list-item
+        %a{href: '#'}
+          %h3= post[:title]
+          %span.admin-news-post-list-item-detail= post[:date] 
+
