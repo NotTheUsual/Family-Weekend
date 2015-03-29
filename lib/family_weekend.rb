@@ -1,9 +1,16 @@
 require 'data_mapper'
 require 'sinatra/base'
 require 'haml'
+require 'json'
 require 'carrierwave/datamapper'
+require 'word-to-markdown'
 
 require_relative 'initialisation'
+
+env = ENV['RACK_ENV'] || "development"
+
+puts env
+require 'pry' if env == 'development'
 
 require_relative 'helpers/app'
 
@@ -36,6 +43,23 @@ class FamilyWeekend < Sinatra::Base
     @news_posts = [{title: 'News Post 1', date: '12/03/15'},{title: 'News Post 2', date: '11/03/15'}]
     haml :"news/manage"
   }
+
+  get('/news/add') {
+    haml :"/news/new"
+  }
+
+  post('/news/convert') {
+    doc = params[:file][:tempfile]
+    wtm_doc = WordToMarkdown.new(doc)
+    string = '{ "post": { "body": "' + wtm_doc.to_s + '" } }'
+    content_type :json
+    json = string.gsub(/\n/, '\\n').to_json
+  }
+
+  post('/news') {
+    binding.pry
+    'OK'
+  } 
 
   # start the server if ruby file executed directly
   run! if app_file == $0

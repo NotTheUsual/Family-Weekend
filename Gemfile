@@ -15,8 +15,11 @@ gem 'fog'
 
 gem 'bcrypt'
 
+gem 'word-to-markdown'
+
 gem 'haml'
 gem 'sass'
+gem 'json'
 
 group :development, :test do
   gem 'rspec'
@@ -29,7 +32,9 @@ group :development, :test do
   gem 'foreman'
 end
 
-gem "codeclimate-test-reporter", group: :test, require: nil
+gem 'codeclimate-test-reporter', group: :test, require: nil
+
+gem 'pry', group: :development
 
 group :staging, :production do
   gem 'thin'

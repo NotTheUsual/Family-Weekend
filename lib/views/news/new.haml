@@ -1,0 +1,19 @@
+%script{src: 'https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js'}
+%script{type: 'text/javascript', src: 'http://cdnjs.cloudflare.com/ajax/libs/showdown/0.3.1/showdown.min.js'}
+%script{type: 'text/javascript', src: '/javascripts/vendor/dropzone.js'}
+%script{type: 'text/javascript', src: '/javascripts/postEditor.js'}
+
+%main.admin{'ng-app' => 'postEditor', 'ng-controller' => 'PostCtrl'}
+  %header.full-width-header
+    %h1 Add New Post
+  %section.post-editor
+    %header.post-editor-header
+      %p Drag and drop your Word doc into the area on the right, and we'll convert it into something we can understand. After a few seconds, you'll see a preview of the post in the panels below. For quick changes, the panel on the left is editable.
+      .dropzone-container
+        %form#post-dropzone.dropzone{action: '/news/convert', method: 'post', multipart: true, 'drop-zone' => ''}
+    %section.post-editor-md-review
+      %form.post-editor-review-form{action: '/news', method: 'post', multipart: true}
+        %textarea{name: 'post[body]', 'ng-model' => 'output'}
+        %input.post-submit{type: 'submit', name: 'Accept', value: 'Accept', 'ng-show' => '!!output'}
+      %article.post-editor-preview{'ng-bind-html' => 'output | markdown'}
+
