@@ -54,6 +54,21 @@ Given(/^there are photos uploaded$/) do
   click_button 'Sign Out'
 end
 
+# Given(/^there are news posts in the database$/) do
+#   visit path_to('the new post page')
+#   fill_in 'post[title]', with: 'Blog Post 1'
+#   fill_in 'post[body]', with: 'This is really important, everyone. _Really_ important.'
+#   click_button 'Accept'
+#   visit path_to('the new post page')
+#   fill_in 'post[title]', with: 'Blog Post 2'
+#   fill_in 'post[body]', with: 'This is less important.'
+#   click_button 'Accept'
+#   visit path_to('the new post page')
+#   fill_in 'post[title]', with: 'Blog Post 3'
+#   fill_in 'post[body]', with: 'At this point, I\'m just wasting time'
+#   click_button 'Accept'
+# end
+
 When(/^I enter the correct details$/) do
   fill_in 'name', with: "admin"
   fill_in 'password', with: "s3cr3t"
@@ -62,6 +77,10 @@ end
 
 When(/^I click 'Sign Out'$/) do
   click_button 'Sign Out'
+end
+
+When(/^I press '(.*?)'$/) do |button|
+  click_button button
 end
 
 When(/^I click "(.*?)"$/) do |link|
@@ -84,6 +103,11 @@ When(/^I upload a photo$/) do
   attach_file('photo', "#{Dir.pwd}/features/fixtures/2011.png")
   fill_in 'year', with: "2011"
   click_button "Upload"
+end
+
+When(/^I enter my new post$/) do
+  fill_in 'post[title]', with: 'New Blog Post!'
+  fill_in 'post[body]', with: 'Really excited about starting this **amazing** blog.'
 end
 
 Then(/^I should see the content for that page$/) do
@@ -133,3 +157,9 @@ Then(/^I should see the video and its description$/) do
   expect(page).to have_content("This film is the edited highlights of over 40 years of footage from the yearly tradition of the Stern family reunion.")
   expect(page).to have_content("For more information, contact Carly Hartley on carly(dot)hartley(at)gmail(dot)com")
 end
+
+Then(/^I should see my new post$/) do
+  expect(page).to have_content('New Blog Post!')
+  expect(page).to have_content('Really excited about starting this amazing blog.')
+end
+

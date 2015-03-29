@@ -162,6 +162,7 @@ GEM
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
+    rdiscount (2.1.7.1)
     reverse_markdown (0.7.0)
       nokogiri
     rspec (2.14.1)
@@ -231,6 +232,7 @@ DEPENDENCIES
   mini_magick
   pry
   rack-flash3
+  rdiscount
   rspec
   sass
   shotgun

@@ -9,7 +9,6 @@ require_relative 'initialisation'
 
 env = ENV['RACK_ENV'] || "development"
 
-puts env
 require 'pry' if env == 'development'
 
 require_relative 'helpers/app'
@@ -44,22 +43,10 @@ class FamilyWeekend < Sinatra::Base
     haml :"news/manage"
   }
 
-  get('/news/add') {
-    haml :"/news/new"
-  }
-
-  post('/news/convert') {
-    doc = params[:file][:tempfile]
-    wtm_doc = WordToMarkdown.new(doc)
-    string = '{ "post": { "body": "' + wtm_doc.to_s + '" } }'
-    content_type :json
-    json = string.gsub(/\n/, '\\n').to_json
-  }
-
-  post('/news') {
-    binding.pry
-    'OK'
-  } 
+  get('/news/add')      { NewsController.call(env) }
+  post('/news/convert') { NewsController.call(env) }
+  post('/news')         { NewsController.call(env) }
+  get('/news/:id')      { NewsController.call(env) }
 
   # start the server if ruby file executed directly
   run! if app_file == $0

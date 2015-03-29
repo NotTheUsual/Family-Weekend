@@ -13,6 +13,7 @@
         %form#post-dropzone.dropzone{action: '/news/convert', method: 'post', multipart: true, 'drop-zone' => ''}
     %section.post-editor-md-review
       %form.post-editor-review-form{action: '/news', method: 'post', multipart: true}
+        %input.title-input{type: 'text', name: 'post[title]'}
         %textarea{name: 'post[body]', 'ng-model' => 'output'}
         %input.post-submit{type: 'submit', name: 'Accept', value: 'Accept', 'ng-show' => '!!output'}
       %article.post-editor-preview{'ng-bind-html' => 'output | markdown'}

@@ -20,6 +20,7 @@ gem 'word-to-markdown'
 gem 'haml'
 gem 'sass'
 gem 'json'
+gem 'rdiscount'
 
 group :development, :test do
   gem 'rspec'

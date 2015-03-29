@@ -29,6 +29,9 @@ module NavigationHelpers
     when /the video page/
       '/video'
 
+    when /the new post page/
+      '/news/add'
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
