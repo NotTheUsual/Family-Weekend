@@ -29,6 +29,9 @@ module NavigationHelpers
     when /the video page/
       '/video'
 
+    when /the news page/
+      '/news'
+
     when /the new post page/
       '/news/add'
 

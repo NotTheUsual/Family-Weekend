@@ -19,7 +19,7 @@
         %ul
           %li
             %a{href: '/', class: nav_class_for('') } Home
-          - pages = ['history', 'next-year', 'photos', 'video']
+          - pages = ['history', 'next-year', 'photos', 'video', 'news']
           - pages.each do |page|
             %li
               %a{href: "/#{page}", class: nav_class_for(page) }= page.capitalize.gsub('-', ' ') 

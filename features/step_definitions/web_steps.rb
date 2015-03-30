@@ -120,6 +120,10 @@ When(/^I edit the post$/) do
   click_button 'Submit'
 end
 
+When(/^I click on the news menu link$/) do
+  click_link 'News'
+end
+
 Then(/^I should see the content for that page$/) do
   expect(page).to have_content('Welcome to the Stern family weekend website, where you’ll find information about this year’s family weekend, and pictures of previous years.
                                 For any newcomers who might be interested we’ve included the story to date, and for those who consider themselves old-timers test yourselves by seeing if you can write out the list of where we were when before you check the history page (it took three of our finest minds for us to manage it).
@@ -196,5 +200,12 @@ Then(/^I should see my edited post$/) do
   expect(current_path).to eq('/news/1')
   expect(page).to have_content('Newer Blog Post!')
   expect(page).to have_content('You, know what? That text was a little rubbish')
+end
+
+Then(/^I should see all the news items$/) do
+  expect(page).to have_content('Blog Post 1')
+  expect(page).to have_content('Blog Post 2')
+  expect(page).to have_content('Blog Post 3')
+  expect(page).to have_xpath("//a[contains(@href, '/news/1')]")
 end
 

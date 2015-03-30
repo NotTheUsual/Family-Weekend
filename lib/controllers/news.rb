@@ -43,6 +43,11 @@ class NewsController < Base
     {title: post.title, body: post.body}.to_json
   end
 
+  get '/news' do
+    @news_posts = NewsPost.all
+    haml :'news/all'
+  end
+
   post '/news' do
     post = NewsPost.create(news_post_params)
     redirect to("/news/#{post.id}")

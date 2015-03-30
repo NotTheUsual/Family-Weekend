@@ -47,3 +47,11 @@ Feature: News Posts
     Given I am logged in as a regular user
     When I visit the edit post page
     Then I should be on the login page
+
+  Scenario: Viewing posts
+    Given I am logged in
+    And there are news posts in the database
+    When I click on the news menu link
+    Then I should be on the news page
+    And I should see all the news items
+
