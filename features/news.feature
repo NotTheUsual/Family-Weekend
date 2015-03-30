@@ -37,3 +37,13 @@ Feature: News Posts
     And I am on the edit post page
     When I edit the post
     Then I should see my edited post
+
+  Scenario: Trying to edit a post when logged out
+    Given I am not logged in
+    When I visit the edit post page
+    Then I should be on the login page
+
+  Scenario: Trying to add a new post as a non-admin user
+    Given I am logged in as a regular user
+    When I visit the edit post page
+    Then I should be on the login page

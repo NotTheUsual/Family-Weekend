@@ -32,6 +32,7 @@ class NewsController < Base
   end
 
   get '/news/:id/edit' do |id|
+    redirect_if_not_admin
     @post = NewsPost.get(id)
     haml :'/news/edit'
   end
