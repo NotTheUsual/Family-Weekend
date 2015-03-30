@@ -35,6 +35,9 @@ module NavigationHelpers
     when /the manage posts page/
       '/news/manage'
 
+    when /the edit post page/
+      '/news/1/edit'
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

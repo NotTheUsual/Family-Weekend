@@ -30,3 +30,10 @@ Feature: News Posts
     And I visit the manage posts page
     When I click on a post
     Then I should be able to edit that post
+
+  Scenario: Actually editing a post
+    Given I am logged in
+    And there are news posts in the database
+    And I am on the edit post page
+    When I edit the post
+    Then I should see my edited post

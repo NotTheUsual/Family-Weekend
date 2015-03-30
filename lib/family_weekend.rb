@@ -43,6 +43,7 @@ class FamilyWeekend < Sinatra::Base
   post('/news/convert') { NewsController.call(env) }
   post('/news')         { NewsController.call(env) }
   get('/news/:id')      { NewsController.call(env) }
+  put('/news/:id')      { NewsController.call(env) }
   get('/news/:id/edit') { NewsController.call(env) }
   get('/news/:id/json') { NewsController.call(env) }
 

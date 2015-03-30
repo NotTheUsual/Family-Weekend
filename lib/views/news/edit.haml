@@ -12,7 +12,8 @@
       .dropzone-container
         %form#post-dropzone.dropzone{action: '/news/convert', method: 'post', multipart: true, 'drop-zone' => ''}
     %section.post-editor-md-review
-      %form.post-editor-review-form{action: "/news/#{@post.id}", method: 'put', multipart: true}
+      %form.post-editor-review-form{action: "/news/#{@post.id}", method: 'post', multipart: true}
+        %input{type: 'hidden', name: '_method', value: 'put'}
         %input.title-input{type: 'text', name: 'post[title]', value: @post.title}
         %textarea{name: 'post[body]', 'ng-model' => 'output'}(ng-init="output='Loading...'")= @post.body
         %input.post-submit{type: 'submit', name: 'Accept', value: 'Submit', 'ng-show' => '!!output'}

@@ -3,6 +3,8 @@ require 'word-to-markdown'
 require 'pry'
 
 class NewsController < Base
+  use Rack::MethodOverride
+  # enable :method_override
 
   get '/news/add' do
     redirect_if_not_admin
@@ -24,6 +26,12 @@ class NewsController < Base
 
   get '/news/:id' do |id|
     @post = NewsPost.first(id)
+    haml :'/news/show'
+  end
+
+  put '/news/:id' do |id|
+    post = NewsPost.get(id)
+    @post = post if post.update(title: params[:post][:title], body: params[:post][:body])
     haml :'/news/show'
   end
 

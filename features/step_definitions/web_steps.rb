@@ -114,6 +114,12 @@ When(/^I click on a post$/) do
   click_link 'Blog Post 1'
 end
 
+When(/^I edit the post$/) do
+  fill_in 'post[title]', with: 'Newer Blog Post!'
+  fill_in 'post[body]', with: 'You, know what? That text was a _little_ rubbish'
+  click_button 'Submit'
+end
+
 Then(/^I should see the content for that page$/) do
   expect(page).to have_content('Welcome to the Stern family weekend website, where you’ll find information about this year’s family weekend, and pictures of previous years.
                                 For any newcomers who might be interested we’ve included the story to date, and for those who consider themselves old-timers test yourselves by seeing if you can write out the list of where we were when before you check the history page (it took three of our finest minds for us to manage it).
@@ -183,5 +189,12 @@ Then(/^I should be able to edit that post$/) do
   expect(current_path).to eq('/news/1/edit')
   expect(page).to have_xpath("//input[contains(@value, 'Blog Post 1')]")
   expect(page).to have_content('This is really important, everyone. _Really_ important.')
+end
+
+Then(/^I should see my edited post$/) do
+  current_path = URI.parse(current_url).path
+  expect(current_path).to eq('/news/1')
+  expect(page).to have_content('Newer Blog Post!')
+  expect(page).to have_content('You, know what? That text was a little rubbish')
 end
 
