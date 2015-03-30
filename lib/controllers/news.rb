@@ -1,5 +1,6 @@
 require_relative 'base'
 require 'word-to-markdown'
+require 'pry'
 
 class NewsController < Base
 
@@ -16,9 +17,25 @@ class NewsController < Base
     json = string.gsub(/\n/, '\\n').to_json
   end
 
+  get '/news/manage' do
+    @news_posts = NewsPost.all
+    haml :'/news/manage'
+  end
+
   get '/news/:id' do |id|
     @post = NewsPost.first(id)
     haml :'/news/show'
+  end
+
+  get '/news/:id/edit' do |id|
+    @post = NewsPost.get(id)
+    haml :'/news/edit'
+  end
+
+  get '/news/:id/json' do |id|
+    post = NewsPost.get(id)
+    content_type :json
+    {title: post.title, body: post.body}.to_json
   end
 
   post '/news' do

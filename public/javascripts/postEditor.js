@@ -2,9 +2,23 @@
 
 var postEditor = angular.module('postEditor', []);
 
-postEditor.controller('PostCtrl', ['$scope', 
-  function($scope) {
-    $scope.output = '';
+postEditor.controller('PostCtrl', ['$scope', '$http',
+  function($scope, $http) {
+    $scope.output = $scope.output || '';
+
+    console.log('postId', $scope.postId);
+    if (!!$scope.postId) {
+      $http.get('/news/' + $scope.postId + '/json').then(function(post) {
+        $scope.output = post.body;
+      });
+    }
+
+    $scope.setId = function(id) {
+      $http.get('/news/' + id + '/json').then(function(post) {
+        console.log(post);
+        $scope.output = post.data.body;
+      });
+    };
 
     Dropzone.options.postDropzone = {
       maxFiles: 1,
