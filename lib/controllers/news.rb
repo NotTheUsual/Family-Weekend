@@ -4,7 +4,6 @@ require 'pry'
 
 class NewsController < Base
   use Rack::MethodOverride
-  # enable :method_override
 
   get '/news/add' do
     redirect_if_not_admin
@@ -12,11 +11,8 @@ class NewsController < Base
   end
 
   post '/news/convert' do
-    doc = params[:file][:tempfile]
-    wtm_doc = WordToMarkdown.new(doc)
-    string = '{ "post": { "body": "' + wtm_doc.to_s + '" } }'
     content_type :json
-    json = string.gsub(/\n/, '\\n').to_json
+    as_json_string params[:file][:tempfile]
   end
 
   get '/news/manage' do
@@ -30,8 +26,8 @@ class NewsController < Base
   end
 
   put '/news/:id' do |id|
-    post = NewsPost.get(id)
-    @post = post if post.update(title: params[:post][:title], body: params[:post][:body])
+    @post = NewsPost.get(id)
+    @post.update(title: params[:post][:title], body: params[:post][:body])
     haml :'/news/show'
   end
 
@@ -59,6 +55,12 @@ class NewsController < Base
       body: params[:post][:body],
       created_at: Time.now
     }
+  end
+
+  def as_json_string(doc)
+    wtm_doc = WordToMarkdown.new(doc)
+    string = '{ "post": { "body": "' + wtm_doc.to_s + '" } }'
+    string.gsub(/\n/, '\\n').to_json
   end
 end
 
