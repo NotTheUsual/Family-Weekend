@@ -11,4 +11,8 @@ class NewsPost
   def body_as_html
     RDiscount.new(body).to_html
   end
+
+  def date
+    created_at.strftime('%-d %B, %Y')
+  end
 end

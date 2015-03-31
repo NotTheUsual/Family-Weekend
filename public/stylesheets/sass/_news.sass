@@ -3,9 +3,10 @@
   width: 100%
 
 .admin-news-post-list-item
+  position: relative
   width: 100%
 
-  a
+  a:first-child
     background-color: #f7f7f7
     display: block
     margin-bottom: 0.2em
@@ -16,20 +17,33 @@
       background-color: #ddd
 
   h3
-    display: inline-block
     color: $featured-color
+    display: inline-block
     font-size: 1.75em
     font-weight: 500
 
 .admin-news-post-list-item-detail
-  margin-left: 1em
-  font-size: 1em
   color: #b7b7b7
+  font-size: 1em
+  margin-left: 1em
+
+.admin-news-post-link-out
+  border-radius: 3px
+  border: 1px solid #bbb
+  bottom: 1rem
+  color: #999
+  font-size: 0.7em
+  padding: 0.5em 1em
+  position: absolute
+  right: 1em
+
+  &:hover
+    background-color: #ddd
 
 .post-editor-header
-  width: 100%
   display: -webkit-flex
   display: flex
+  width: 100%
 
   p
     display: inline-block
@@ -42,23 +56,21 @@
   .dropzone-container
     background-color: green
     color: #fff
+    display: -webkit-flex
+    display: flex
     -webkit-flex: 1
     flex: 1
     margin: 0.5em
-    // padding: 2em 1em
     text-align: center
     width: auto
-    // width: 20%
-    display: -webkit-flex
-    display: flex
 
     .dropzone
-      padding: 2em 1em
       -webkit-flex: 1
       flex: 1
+      overflow: hidden
+      padding: 2em 1em
       text-align: center
       vertical-align: middle
-      overflow: hidden
    
     .dz-progress,
     .dz-error-message,
@@ -73,20 +85,20 @@
   padding: 1em
 
   .post-editor-review-form
+    background-color: #fff
     -webkit-flex: 1 50%
     flex: 1 50%
     margin-right: 1em
-    background-color: #fff
     
     textarea
-      width: 100%
+      border: none
+      font-family: courier
+      font-size: 1rem
       max-width: 100%
       min-height: 500px
-      font-size: 1rem
       padding: 2em
       resize: none
-      font-family: courier
-      border: none
+      width: 100%
 
   .post-submit
     -webkit-appearance: none
@@ -107,4 +119,33 @@
     background-color: #fff
     padding: 2em
 
+.news-post-list
+  background-color: $body-background
+  border: 2px solid #fff
+  border-top: 0
+  padding: 1rem 2rem
+  width: 100%
 
+.news-post-list-item
+  background-color: #fff
+  margin-bottom: 1rem
+
+  &:last-child
+    margin-bottom: 0
+
+.news-post-listing
+  > header
+    padding: 1rem 1rem 0.5rem
+
+    a
+      color: $featured-color
+      font-size: 2em
+      font-weight: 500
+
+  .main
+    padding: 1em
+
+.news-post-list-item-detail
+  font-size: 0.8em
+  position: relative
+  top: -0.5rem

@@ -4,8 +4,8 @@
   %ul.admin-news-post-list
     - @news_posts.each do |post|
       %li.admin-news-post-list-item
-        %a{href: "/news/#{post.id}"}
         %a{href: "/news/#{post.id}/edit"}
           %h3= post.title
-          %span.admin-news-post-list-item-detail= post.created_at
+          %span.admin-news-post-list-item-detail= post.date
+        %a.admin-news-post-link-out{href: "/news/#{post.id}"} View Original
 

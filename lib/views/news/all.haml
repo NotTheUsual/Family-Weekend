@@ -1,0 +1,13 @@
+%main
+  %header.full-width-header
+    %h1 News
+  %ul.news-post-list
+    - @news_posts.each do |post|
+      %li.news-post-list-item
+        %article.news-post-listing
+          %header
+            %a{href: "/news/#{post.id}"}
+              %h2= post.title
+            %span.news-post-list-item-detail= post.date
+          .main= post.body_as_html
+

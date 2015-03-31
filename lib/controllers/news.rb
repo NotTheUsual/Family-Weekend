@@ -44,7 +44,8 @@ class NewsController < Base
   end
 
   get '/news' do
-    @news_posts = NewsPost.all
+    redirect_if_logged_out
+    @news_posts = NewsPost.all(order: [ :created_at.desc ])
     haml :'news/all'
   end
 
