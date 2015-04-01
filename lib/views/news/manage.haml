@@ -1,6 +1,7 @@
 %main.admin
-  %header.full-width-header
+  %header.full-width-header.news-post-list-header
     %h1 Manage News Posts
+    %a.new-post-button{href: '/news/add'} + New Post
   %ul.admin-news-post-list
     - @news_posts.each do |post|
       %li.admin-news-post-list-item

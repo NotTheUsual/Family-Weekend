@@ -16,12 +16,14 @@ class NewsController < Base
   end
 
   get '/news/manage' do
+    redirect_if_not_admin
     @news_posts = NewsPost.all
     haml :'/news/manage'
   end
 
   get '/news/:id' do |id|
-    @post = NewsPost.first(id)
+    redirect_if_logged_out
+    @post = NewsPost.get(id)
     haml :'/news/show'
   end
 
