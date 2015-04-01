@@ -13,6 +13,6 @@ class NewsPost
   end
 
   def date
-    created_at.strftime('%-d %B, %Y')
+    created_at.strftime('%B %-d, %Y')
   end
 end
