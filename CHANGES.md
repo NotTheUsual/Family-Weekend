@@ -1,5 +1,9 @@
 # Changes
 
+## 0.4.2 (in progress)
+
+- Images moved to faster storage
+
 ## 0.4.1 - Dev 1/4, Released 1/4
 
 - Fixes for Safari/responsiveness
