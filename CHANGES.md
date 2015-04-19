@@ -1,6 +1,6 @@
 # Changes
 
-## 0.4.2 (in progress)
+## 0.4.2 - Released 19/4
 
 - Images moved to faster storage
 
