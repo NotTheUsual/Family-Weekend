@@ -3,6 +3,7 @@
 ## 0.4.3 (in progress)
 
 - Styles now autoprefixed (and built through Gulp)
+- Next year's dates
 
 ## 0.4.2 - Released 19/4
 
