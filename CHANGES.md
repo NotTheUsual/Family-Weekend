@@ -1,5 +1,11 @@
 # Changes
 
+## 0.4.3 (in progress)
+
+- Styles now autoprefixed (and built through Gulp)
+- Next year's dates
+- New Ruby & server version
+
 ## 0.4.2 - Released 19/4
 
 - Images moved to faster storage
