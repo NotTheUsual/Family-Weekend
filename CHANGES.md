@@ -1,6 +1,6 @@
 # Changes
 
-## 0.4.3 (in progress)
+## 0.4.3 - Released 28/2/16
 
 - Styles now autoprefixed (and built through Gulp)
 - Next year's dates
